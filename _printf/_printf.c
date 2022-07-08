@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			{
 				if (format[i+1] == k[j].spec)
 				{
-					res += k[j].f((char) va_arg(ap, int));
+					res += k[j].f(va_arg(ap, char*));
 					i++;
 					nb_f++;
 					break;
