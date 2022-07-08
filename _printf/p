@@ -14,10 +14,9 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i, j, res = 0, nb_f = 0;
-	conv k[] ={
-		{'c', print_char},
-		{'s', print_string}
-	};
+	char c;
+	char *s;
+
 
 	va_start(ap, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -27,31 +26,21 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			continue;
 		}
-
-		for(j = 0; j < 2; j++)   /* format[i] = '%' */
+		switch(format[i + 1])
 		{
-			if (format[i+1] == k[j].spec)
-			{
-				res += k[j].f(ap);
-				i++;
-				nb_f++;
-				break;
-			}
+		case 'c':
+			c = va_arg(ap, int);
+			_putchar(c);
+			break;
+		case 's':
+			s = va_arg(ap, char*);
+			for (j = 0; s[j]; j++)
+				_putchar(s[j]);
+			break;
+		default:
+			_putchar(format[i]);
+			break;
 		}
-		if (j < 2)
-			continue;
-		if (format[i + 1] == '%')
-		{
-			_putchar('%');
-			i++;
-			nb_f++;
-		}
-		else
-		{
-			_printf("Error: no identifier detected \n");
-			return(0);
-		}
-	}
 
 	va_end(ap);
 	res += (i - 1) - nb_f;

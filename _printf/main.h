@@ -5,9 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 int _putchar(char c);
-int print_char(char *c);
-int print_string(char *c);
-int print_percent(char *c);
+int print_char(va_list ap);
+int print_string(va_list ap);
 int _printf(const char *format, ...);
 
 /**
@@ -19,7 +18,7 @@ int _printf(const char *format, ...);
 typedef struct convert
 {
 	char spec;
-	int (*f)(char *c);
+	int (*f)(va_list ap);
 } conv;
 
 #endif /* MAIN_H */

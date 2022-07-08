@@ -7,9 +7,10 @@
  * Return: a number of a character printed
  */
 
-int print_char(char *c)
+int print_char(va_list ap)
 {
-	_putchar(c[0]);
+	char c = (char) va_arg(ap, int);
+	_putchar(c);
 	return (1);
 }
 
@@ -20,15 +21,14 @@ int print_char(char *c)
  * Return : a number of a character printed
  */
 
-int print_string(char *c)
+int print_string(va_list ap)
 {
-	int nb = 0, j;
+	int j;
+	char *s = va_arg(ap, char *);
 
-	for (j = 0; c[j]; j++)
+	for (j = 0; s[j]; j++)
 	{
-		_putchar(c[j]);
-		nb++;
+		_putchar(s[j]);
 	}
-	return (nb - 1);
+	return (j - 1);
 }
-
