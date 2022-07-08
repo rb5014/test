@@ -9,7 +9,7 @@
 
 int print_char(char *c)
 {
-	_putchar(c);
+	_putchar(c[0]);
 	return (1);
 }
 
@@ -22,17 +22,14 @@ int print_char(char *c)
 
 int print_string(char *c)
 {
-	int nb = 0, i = 0, j;
+	int nb = 0, j;
 
-	while (c[i])
-		i++;
-	
-	for (j = 0; j < (i - 1); j++)
+	for (j = 0; c[j]; j++)
 	{
 		_putchar(c[j]);
 		nb++;
 	}
-	return (nb);
+	return (nb - 1);
 }
 
 /**
@@ -44,6 +41,7 @@ int print_string(char *c)
 
 int print_percent(char *c)
 {
+	(void) c;
 	_putchar(37);
 	return (1);
 }

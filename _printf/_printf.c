@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i, j, res = 0, nb_f = 0;
-	struct conv k[] ={
+	conv k[] ={
 		{'c', print_char}
 		{'s', print_string}
 		{'%', print_percent}
