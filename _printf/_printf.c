@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -16,9 +15,8 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int i, j, res = 0, nb_f = 0;
 	conv k[] ={
-		{'c', print_char}
+		{'c', print_char},
 		{'s', print_string}
-		{'%', print_percent}
 	};
 
 	va_start(ap, format);
@@ -36,11 +34,20 @@ int _printf(const char *format, ...)
 					break;
 				}
 			}
-			_printf("Error: no identifier detected \n");
-			return(0);
+			if (format[i+1] == '%')
+			{
+				_putchar('%');
+				i++;
+				nb_f;
+			}
+			else
+			{
+				_printf("Error: no identifier detected \n");
+				return(0);
+			}
 		}
 		else
-			_print_char[i];
+			_putchar(format[i]);
 	}
 
 	va_end(ap);
