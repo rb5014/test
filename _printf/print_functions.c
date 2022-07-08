@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * print_char : cfr description
- * @c: input char
+ * print_char - cfr description
+ * @ap: input list of args
  * description: print a character
  * Return: a number of a character printed
  */
@@ -10,15 +10,16 @@
 int print_char(va_list ap)
 {
 	char c = (char) va_arg(ap, int);
+
 	_putchar(c);
 	return (1);
 }
 
 /**
- * print_string : cfr description
- * @c: input string
+ * print_string - cfr description
+ * @ap: input list of args
  * description: print a string
- * Return : a number of a character printed
+ * Return: a number of a character printed
  */
 
 int print_string(va_list ap)
