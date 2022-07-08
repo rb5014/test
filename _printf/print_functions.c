@@ -32,16 +32,3 @@ int print_string(char *c)
 	return (nb - 1);
 }
 
-/**
- * print_percent : cfr description
- * @c: input char
- * description: print percent character
- * Return: a number of a character printed
- */
-
-int print_percent(char *c)
-{
-	(void) c;
-	_putchar(37);
-	return (1);
-}

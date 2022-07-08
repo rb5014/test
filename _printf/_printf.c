@@ -20,11 +20,11 @@ int _printf(const char *format, ...)
 	};
 
 	va_start(ap, format);
-	for (i = 0; format[i] != '\0', i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			for(j = 0; k[j]; j++)
+			for(j = 0; j < 2; j++)
 			{
 				if (format[i+1] == k[j].spec)
 				{
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			{
 				_putchar('%');
 				i++;
-				nb_f;
+				nb_f++;
 			}
 			else
 			{

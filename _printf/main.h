@@ -18,7 +18,7 @@ int _printf(const char *format, ...);
 
 typedef struct convert
 {
-	char *spec;
+	char spec;
 	int (*f)(char *c);
 } conv;
 
