@@ -10,42 +10,35 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i, j, res = 0, nb_f = 0;
-	conv k[] = {{'c', print_char}, {'s', print_string}};
+	int i, j, nb_c;
+	conv k[] = {{'c', print_char}, {'s', print_string},
+		    {'%', print_percent}, {0, 0}};
 
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
+			nb_c += _putchar(format[i]);
 			continue;
 		}
-		for (j = 0; j < 2; j++)   /* format[i] = '%' */
+		if (!(format[i + 1]))
+			return (-1);
+		for (j = 0; j < 4; j++)   /* format[i] = '%' */
 		{
 			if (format[i + 1] == k[j].spec)
 			{
-				res += k[j].f(ap);
+				nb_c += k[j].f(ap);
 				i++;
-				nb_f++;
 				break;
 			}
 		}
-		if (j < 2)
+		if (j < 4)
 			continue;
-		if (format[i + 1] == '%')
-		{
-			_putchar('%');
-			i++;
-			nb_f++;
-		}
-		else
-		{
-			_printf("Error: no identifier detected \n");
-			return (0);
-		}
+		nb_c += _putchar(format[i]);
 	}
 	va_end(ap);
-	res += (i - 1) - nb_f;
-	return (res);
+	return (nb_c);
 }
